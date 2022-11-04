@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="44" viewBox="0 0 60 44">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.251"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="그룹_1802" data-name="그룹 1802" transform="translate(-15)">
+    <g id="그룹_886" data-name="그룹 886" transform="translate(-10 -565)">
+      <rect id="사각형_889" data-name="사각형 889" width="34" height="4" rx="2" transform="translate(38 565)" fill="#fff"/>
+      <path id="패스_661" data-name="패스 661" d="M-1,0H29L44,40H-16Z" transform="translate(41 569)" fill="url(#linear-gradient)"/>
+      <g id="그룹_598" data-name="그룹 598" opacity="0.6">
+        <circle id="타원_197" data-name="타원 197" cx="1" cy="1" r="1" transform="translate(67 577)" fill="#fff"/>
+        <circle id="타원_200" data-name="타원 200" cx="1" cy="1" r="1" transform="translate(41.564 573.063) rotate(-103)" fill="#fff"/>
+        <circle id="타원_198" data-name="타원 198" cx="0.5" cy="0.5" r="0.5" transform="translate(65 581)" fill="#fff"/>
+        <circle id="타원_201" data-name="타원 201" cx="0.5" cy="0.5" r="0.5" transform="translate(45.911 574.111) rotate(-103)" fill="#fff"/>
+        <circle id="타원_202" data-name="타원 202" cx="0.5" cy="0.5" r="0.5" transform="translate(43.911 578) rotate(-103)" fill="#fff"/>
+        <circle id="타원_199" data-name="타원 199" cx="0.5" cy="0.5" r="0.5" transform="translate(36 599)" fill="#fff"/>
+      </g>
+    </g>
+    <g id="그룹_596" data-name="그룹 596" transform="translate(-9234 -7700)">
+      <rect id="사각형_605" data-name="사각형 605" width="24" height="24" transform="translate(9267 7720)" fill="none"/>
+      <g id="그룹_1801" data-name="그룹 1801">
+        <path id="패스_342" data-name="패스 342" d="M9.766-58.537a3.762,3.762,0,0,0,.947,2.8,3.874,3.874,0,0,0,2.826.932H27.226a3.25,3.25,0,0,0,2.471-.932,3.917,3.917,0,0,0,.888-2.8V-70.449a3.762,3.762,0,0,0-.947-2.8,3.874,3.874,0,0,0-2.826-.932h-1.7a4.458,4.458,0,0,0-.725-2.308,5.152,5.152,0,0,0-1.79-1.687,4.794,4.794,0,0,0-2.427-.636,4.766,4.766,0,0,0-2.412.636,5.152,5.152,0,0,0-1.79,1.687,4.458,4.458,0,0,0-.725,2.308h-1.7a3.874,3.874,0,0,0-2.826.932,3.762,3.762,0,0,0-.947,2.8Zm7.605-15.64a2.586,2.586,0,0,1,.414-1.332,2.811,2.811,0,0,1,1.014-.94,2.782,2.782,0,0,1,1.369-.348,2.77,2.77,0,0,1,1.376.348,2.829,2.829,0,0,1,1.006.94,2.586,2.586,0,0,1,.414,1.332Z" transform="translate(9259.234 7798.809)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
