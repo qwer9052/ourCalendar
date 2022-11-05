@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(255,255,255,0.1)',
     zIndex: 1000,
   },
 });

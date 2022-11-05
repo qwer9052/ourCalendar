@@ -138,7 +138,7 @@ export default function TabOne() {
         items={items}
         // Callback that gets called when items for a certain month should be loaded (month became visible)
         loadItemsForMonth={(month) => {
-          console.log('trigger items loading');
+          //console.log('trigger items loading');
         }}
         // Callback that fires when the calendar is opened or closed
         onCalendarToggled={(calendarOpened) => {
@@ -146,11 +146,11 @@ export default function TabOne() {
         }}
         // Callback that gets called on day press
         onDayPress={(day) => {
-          console.log('day pressed');
+          //console.log('day pressed');
         }}
         // Callback that gets called when day changes while scrolling agenda list
         onDayChange={(day) => {
-          console.log('day changed');
+          //console.log('day changed');
         }}
         minDate={new Date().toDateString()}
         pastScrollRange={1}
@@ -165,7 +165,7 @@ export default function TabOne() {
           return r1.text !== r2.text;
         }}
         onMonthChange={(item) => {
-          console.log('onMonthChange');
+          //console.log('onMonthChange');
         }}
         // Specify how empty date content with no items should be rendered
         renderEmptyDate={(item) => {

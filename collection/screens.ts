@@ -12,4 +12,6 @@ import Signup from '../screen/Signup';
 import Test2 from '../screen/Test2';
 import Landing from '../screen/Landing';
 
-export { TabOne, TabTwo, TabThree, TabFour, ModalScreen, Login, Test2, Signup, Landing };
+import Splash from '../screen/Splash';
+
+export { TabOne, TabTwo, TabThree, TabFour, ModalScreen, Login, Test2, Signup, Landing, Splash };

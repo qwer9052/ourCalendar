@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import * as React from 'react';
+import React, { lazy } from 'react';
 import { useEffect } from 'react';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from './types';
@@ -22,7 +22,7 @@ import {
   IconCalendar,
   IconMessage,
 } from '../collection/icons';
-import { ModalScreen, TabFour, TabOne, TabThree, TabTwo, Login, Test2, Signup, Landing } from '../collection/screens';
+import { ModalScreen, TabFour, TabOne, TabThree, TabTwo, Login, Test2, Signup, Landing, Splash } from '../collection/screens';
 import { navigationRef } from '../util/navigationService';
 import { COLORS } from '../style/css/commonStyle';
 
@@ -48,7 +48,7 @@ export default function Navigation() {
 const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName='Landing'>
+    <Stack.Navigator initialRouteName='Splash'>
       <Stack.Screen
         name='Login'
         component={Login}
@@ -74,6 +74,15 @@ function RootNavigator() {
       <Stack.Screen
         name='Landing'
         component={Landing}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='Splash'
+        component={Splash}
         options={{
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
@@ -103,6 +112,7 @@ function BottomTabNavigator() {
         name='TabOne'
         component={TabOne}
         options={() => ({
+          title: '일정',
           tabBarIcon: ({ focused }) => (focused ? <IconCalendar width={25} height={25} fill={COLORS.black_800} /> : <IconCalendar width={25} height={25} fill={COLORS.black_100} />),
         })}
       />
@@ -110,6 +120,8 @@ function BottomTabNavigator() {
         name='TabTwo'
         component={TabTwo}
         options={() => ({
+          title: '게시판',
+          headerShown: false,
           tabBarIcon: ({ focused }) => (focused ? <IconMessage width={30} height={30} fill={COLORS.black_800} /> : <IconMessage width={30} height={30} fill={COLORS.black_100} />),
         })}
       />
@@ -117,6 +129,7 @@ function BottomTabNavigator() {
         name='TabThree'
         component={TabThree}
         options={() => ({
+          title: '마이페이지',
           tabBarIcon: ({ focused }) => (focused ? <IconPerson width={25} height={25} fill={COLORS.black_800} /> : <IconPerson width={25} height={25} fill={COLORS.black_100} />),
         })}
       />

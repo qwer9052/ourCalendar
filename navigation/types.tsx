@@ -17,6 +17,7 @@ export type RootStackParamList = {
   Login: undefined;
   Signup: undefined;
   Landing: undefined;
+  Splash: undefined;
   Test2: undefined;
   ModalScreen: undefined;
   NotFound: undefined;

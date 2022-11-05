@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Image, Keyboard, KeyboardAvoidingView, Platform, StatusBar, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { TextInput, Text, Button, HelperText } from 'react-native-paper';
+import { Token } from '../type/token';
+import { writeToStorage } from '../util/asyncStorage';
 import { axiosInstance, axiosJwtInstance } from '../util/axiosPlugin';
 import { handleError, handleOnchange } from '../util/common';
 import { isValidEmail } from '../util/stringUtil';
@@ -72,8 +74,14 @@ export default function Signup() {
         name: inputs.name,
       })
       .then((res) => {
-        Alert.alert('성공');
-        console.log(res);
+        console.log(res.data);
+        const { accessToken, refreshToken } = res.data;
+        const token: Token = {
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+        };
+        writeToStorage('token', JSON.stringify(token));
+        navigation.navigate('Root', { screen: 'TabOne' });
       })
       .catch((err) => {
         Alert.alert('오류');
