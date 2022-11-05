@@ -37,19 +37,21 @@ export const axiosInstance = axios.create({
   baseURL: `${userBackServerUrl}/v1`,
 });
 
-axiosInstance.interceptors.request.use(intercepterReq(), (err) => {
-  return Promise.reject(err);
-});
+axiosInstance.interceptors.request.use(intercepterReq(), Promise.reject);
 
 export const axiosJwtInstance = axios.create({
   baseURL: `${userBackServerUrl}/v1`,
 });
 
-axiosJwtInstance.interceptors.request.use(jwtIntercepterReq(), (err) => {
-  return Promise.reject(err);
+axiosJwtInstance.interceptors.request.use(jwtIntercepterReq(), Promise.reject);
+axiosJwtInstance.interceptors.response.use((response) => response, jwtIntercepterRes());
+
+export const axiosJwtPostInstance = axios.create({
+  baseURL: `${postBackServerUrl}/v1`,
 });
 
-axiosJwtInstance.interceptors.response.use((response) => response, jwtIntercepterRes());
+axiosJwtPostInstance.interceptors.request.use(jwtIntercepterReq(), Promise.reject);
+axiosJwtPostInstance.interceptors.response.use((response) => response, jwtIntercepterRes());
 
 export function logout() {
   U.writeToStorage(

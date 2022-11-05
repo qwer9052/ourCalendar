@@ -6,11 +6,13 @@ import { useNavigation } from '@react-navigation/native';
 import { Post } from '../type/post';
 import { IconMessageWhite, IconPasswordGray, IconThumbWhite } from '../collection/icons';
 
-type BorderItemType = Post & {};
+type PostDetailItemype = Post & {
+  onPressItem?: Function;
+};
 
-function BorderItem(props: BorderItemType) {
+function PostDetailItem(props: PostDetailItemype) {
   const navigation = useNavigation();
-  const { postId, title, content, creDt, postType, del, user } = props;
+  const { postId, title, content, creDt, postType, del, user, onPressItem } = props;
   return (
     <PressableOpacity onPress={() => navigation.navigate('PostDetail', { postId: postId })} style={{ paddingVertical: 8, paddingHorizontal: 16 }}>
       <View style={{ flexDirection: 'row', paddingVertical: 8 }}>
@@ -30,7 +32,7 @@ function BorderItem(props: BorderItemType) {
         <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
           <IconThumbWhite width={16} />
         </Pressable>
-        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
+        <Pressable onPress={() => (onPressItem ? onPressItem() : null)} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
           <IconMessageWhite width={15} />
         </Pressable>
         <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
@@ -53,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BorderItem;
+export default PostDetailItem;

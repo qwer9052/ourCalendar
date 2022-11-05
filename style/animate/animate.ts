@@ -12,7 +12,7 @@ export const layoutAnimation = () => {
   const layoutAnimConfig = {
     duration: 300,
     create: {
-      duration: 100,
+      duration: 500,
       type: LayoutAnimation.Types.easeInEaseOut,
       property: LayoutAnimation.Properties.opacity,
     },

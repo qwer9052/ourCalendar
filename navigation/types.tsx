@@ -18,6 +18,8 @@ export type RootStackParamList = {
   Signup: undefined;
   Landing: undefined;
   Splash: undefined;
+  PostWrite: undefined;
+  PostDetail: { postId: number };
   Test2: undefined;
   ModalScreen: undefined;
   NotFound: undefined;

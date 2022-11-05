@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { Platform, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { LoadingView } from '../component/LoadingView';
+import { SplashView } from '../component/SplashView';
 import { getToken } from '../util/axiosPlugin';
 
 export default function Splash() {
@@ -22,5 +23,5 @@ export default function Splash() {
       });
   };
 
-  return <LoadingView setShow={true} />;
+  return <SplashView setShow={true} />;
 }

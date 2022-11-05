@@ -24,7 +24,7 @@ import IconInputX from '../assets/images/svg/icon/icon_input_x.svg';
 import IconXGray from '../assets/images/svg/icon/icon_x_gray.svg';
 import IconCheckboxRed from '../assets/images/svg/icon/icon_checkbox_red.svg';
 import IconUncheckboxGray from '../assets/images/svg/icon/icon_uncheckbox_gray.svg';
-import IconPlusGray from '../assets/images/svg/icon/icon_plus_gray.svg';
+import IconPlusBlack from '../assets/images/svg/icon/icon_plus_black.svg';
 
 import IconFacebook from '../assets/images/svg/icon/icon_facebook.svg';
 import IconInstargram from '../assets/images/svg/icon/icon_instargram.svg';
@@ -37,8 +37,20 @@ import IconYoutube from '../assets/images/svg/icon/icon_youtube.svg';
 import IconPerson from '../assets/images/svg/icon/icon_person.svg';
 import IconCalendar from '../assets/images/svg/icon/icon_calendar.svg';
 import IconMessage from '../assets/images/svg/icon/icon_message.svg';
+import IconArrowDownGray from '../assets/images/svg/icon/icon_arrrow_down_gray.svg';
+
+import IconThumbBlack from '../assets/images/svg/icon/icon_thumb_black.svg';
+import IconThumbWhite from '../assets/images/svg/icon/icon_thumb_white.svg';
+
+import IconMessageBlack from '../assets/images/svg/icon/icon_message_black.svg';
+import IconMessageWhite from '../assets/images/svg/icon/icon_message_white.svg';
 
 export {
+  IconMessageBlack,
+  IconMessageWhite,
+  IconThumbBlack,
+  IconThumbWhite,
+  IconArrowDownGray,
   IconMessage,
   IconCalendar,
   IconPerson,
@@ -49,7 +61,7 @@ export {
   IconTiktok,
   IconTwitter,
   IconYoutube,
-  IconPlusGray,
+  IconPlusBlack,
   IconUncheckboxGray,
   IconCheckboxRed,
   IconXGray,

@@ -1,5 +1,5 @@
 import React, { type PropsWithChildren } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { Provider as ReduxProvider } from 'react-redux';
 import { makeStore } from './store/makeStore';
 import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
@@ -49,6 +49,7 @@ const App = () => {
   return (
     <ReduxProvider store={store}>
       <SafeAreaProvider>
+        <StatusBar barStyle={'dark-content'} />
         <Navigation />
       </SafeAreaProvider>
     </ReduxProvider>

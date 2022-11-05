@@ -22,11 +22,15 @@ import {
   IconCalendar,
   IconMessage,
 } from '../collection/icons';
-import { ModalScreen, TabFour, TabOne, TabThree, TabTwo, Login, Test2, Signup, Landing, Splash } from '../collection/screens';
+import { ModalScreen, TabFour, TabOne, TabThree, TabTwo, Login, Test2, Signup, Landing, Splash, PostWrite, PostDetail } from '../collection/screens';
 import { navigationRef } from '../util/navigationService';
 import { COLORS } from '../style/css/commonStyle';
+import { LoadingView } from '../component/LoadingView';
+import { useSelector } from 'react-redux';
 
 export default function Navigation() {
+  const loading = useSelector((state: any) => state.loadingReducer.loading);
+
   useEffect(() => {
     // console.log('loading : ' + loading);
   }, []);
@@ -39,7 +43,7 @@ export default function Navigation() {
       //onStateChange={() => Referral({ navigationRef: navigationRef })}
     >
       {/* <DevButton /> */}
-      {/* <LoadingView setShow={loading} /> */}
+      <LoadingView setShow={loading} />
       <RootNavigator />
     </NavigationContainer>
   );
@@ -72,6 +76,16 @@ function RootNavigator() {
         }}
       />
       <Stack.Screen
+        name='PostDetail'
+        component={PostDetail}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          headerShadowVisible: false,
+        }}
+      />
+
+      <Stack.Screen
         name='Landing'
         component={Landing}
         options={{
@@ -87,6 +101,16 @@ function RootNavigator() {
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='PostWrite'
+        component={PostWrite}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+          headerShadowVisible: false,
+          gestureEnabled: false,
         }}
       />
 
