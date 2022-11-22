@@ -1,9 +1,11 @@
-import { RouteProp, useFocusEffect, useNavigation } from '@react-navigation/native';
-import React, { lazy, useCallback, useEffect, useRef, useState } from 'react';
+import { RouteProp, useNavigation } from '@react-navigation/native';
+import React, { lazy, useEffect, useRef, useState } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, StatusBar, StyleSheet, Text, View, KeyboardEvent, Animated, Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { IconArrowDownGray, IconBackBlack, IconMessageBlack, IconMessageWhite, IconPasswordGray, IconPlusBlack, IconSearchBlack, IconThumbBlack, IconThumbWhite } from '../../collection/icons';
+import CommentChlidrenItem from '../../component/CommentChlidrenItem';
+import CommentDetailItem from '../../component/CommentDetailItem';
 import CommentItem from '../../component/CommentItem';
 import CommentItems from '../../component/CommentItems';
 import PostDetailItem from '../../component/PostDetailItem';
@@ -11,7 +13,7 @@ import { PressableOpacity } from '../../component/PressableOpacity';
 import { RootStackParamList } from '../../navigation/types';
 import { layoutAnimation } from '../../style/animate/animate';
 import { COLORS } from '../../style/css/commonStyle';
-import { Post } from '../../type/post';
+import { Comment, Post } from '../../type/post';
 import { axiosJwtPostInstance } from '../../util/axiosPlugin';
 import { goBack } from '../../util/common';
 import { useKeyboard } from '../../util/useKeyboard';
@@ -19,41 +21,25 @@ import { useKeyboardVerticalOffset } from '../../util/useScreenTransitionEnded';
 
 const BorderItem = lazy(() => import('../../component/BorderItem'));
 
-type postDetail = {
-  route: RouteProp<RootStackParamList, 'PostDetail'>;
+type commentDetail = {
+  route: RouteProp<RootStackParamList, 'CommentDetail'>;
 };
 
-export default function PostDetail(props: postDetail) {
-  const { postId } = props.route.params;
+export default function CommentDetail(props: commentDetail) {
+  const { commentId } = props.route.params;
   const navigation = useNavigation();
-  const [item, setItem] = useState<Post>({});
+  const [item, setItem] = useState<Comment>({});
   const [comment, setComment] = useState('');
   const insets = useSafeAreaInsets();
-  const keyboardVerticalOffset = useKeyboardVerticalOffset(45);
   const refInput = useRef<TextInput>(null);
-  const [commentId, setCommentId] = useState(0);
 
-  // const [offsetAnim] = useState(Animated.diffClamp(scrollY, 0, HEADER_HEIGHT));
+  useEffect(() => {
+    getComment();
+  }, []);
 
-  // const headerY = offsetAnim.interpolate({
-  //   inputRange: [0, HEADER_HEIGHT],
-  //   outputRange: [0, -HEADER_HEIGHT],
-  //   extrapolate: 'clamp',
-  // });
-
-  // useEffect(() => {
-  //   post();
-  // }, []);
-
-  useFocusEffect(
-    useCallback(() => {
-      post();
-    }, []),
-  );
-
-  const post = () => {
+  const getComment = () => {
     axiosJwtPostInstance
-      .get(`post/${postId}`)
+      .get(`/post/comment/${commentId}`)
       .then((res) => {
         setItem(res.data);
         layoutAnimation();
@@ -70,11 +56,11 @@ export default function PostDetail(props: postDetail) {
     }
 
     axiosJwtPostInstance
-      .post(`post/comment/${postId}/${commentId}`, { content: comment })
+      .post(`post/comment/${commentId}`, { content: comment })
       .then((res) => {
         setComment('');
         Alert.alert('', '댓글이 등록되었습니다.', [{ text: '확인' }]);
-        post();
+        getComment();
       })
       .catch((err) => {
         console.log(err);
@@ -120,24 +106,21 @@ export default function PostDetail(props: postDetail) {
         </View>
       </View>
 
-      <ScrollView style={{}}>
-        <PostDetailItem {...item} onPressItem={() => refInput.current?.focus()} />
+      <ScrollView style={{ flex: 1 }}>
+        <CommentDetailItem {...item} onPressItem={() => refInput.current?.focus()} />
         <View
           style={{
-            padding: 10,
-            borderBottomWidth: 1,
-            borderBottomColor: COLORS.black_100,
             marginVertical: 16,
             borderTopWidth: 1,
-            borderTopColor: COLORS.black_100,
-            flexDirection: 'row',
-            alignContent: 'center',
+            borderTopColor: COLORS.black_000,
           }}
         >
-          <Text>시간순</Text>
-          <IconArrowDownGray width={15} height={15} />
+          {/* <Text>시간순</Text>
+          <IconArrowDownGray width={15} height={15} /> */}
         </View>
-        <CommentItems comment={item.comments} />
+        {item.children?.map((e) => {
+          return <CommentChlidrenItem backgroundColor='#fff' marginLeft={1} key={e.creDt + '_' + e.commentId} {...e} />;
+        })}
       </ScrollView>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#fff' }}>
         <Animated.View

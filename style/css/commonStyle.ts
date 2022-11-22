@@ -17,6 +17,7 @@ export const COLORS = {
   yellow: '#FCC92E',
   green: '#26E995',
   white: '#FFFFFF',
+  black_000: '#ededed',
   black_100: '#D5D6DB',
   black_200: '#BBBDC5',
   black_300: '#9294A1',

@@ -10,14 +10,14 @@ type BorderItemType = Post & {};
 
 function BorderItem(props: BorderItemType) {
   const navigation = useNavigation();
-  const { postId, title, content, creDt, postType, del, user } = props;
+  const { postId, title, content, creDt, postType, del, tbUser } = props;
   return (
     <PressableOpacity onPress={() => navigation.navigate('PostDetail', { postId: postId })} style={{ paddingVertical: 8, paddingHorizontal: 16 }}>
       <View style={{ flexDirection: 'row', paddingVertical: 8 }}>
         <View style={{ backgroundColor: '#222', width: 32, height: 32, borderRadius: 16 }} />
         <View style={{ marginLeft: 15 }}>
           <Text>{postType}</Text>
-          <Text>{user?.name}</Text>
+          <Text>{tbUser?.name}</Text>
         </View>
       </View>
       <View style={{ paddingLeft: 10, paddingVertical: 5 }}>
@@ -30,7 +30,7 @@ function BorderItem(props: BorderItemType) {
         <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
           <IconThumbWhite width={16} />
         </Pressable>
-        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
+        <Pressable onPress={() => navigation.navigate('PostDetail', { postId: postId })} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
           <IconMessageWhite width={15} />
         </Pressable>
         <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>

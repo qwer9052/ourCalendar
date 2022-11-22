@@ -3,40 +3,34 @@ import { Animated, Image, Pressable, StyleSheet, Text, View } from 'react-native
 import LottieView from 'lottie-react-native';
 import { PressableOpacity } from './PressableOpacity';
 import { useNavigation } from '@react-navigation/native';
-import { Post } from '../type/post';
+import { Comment, Post } from '../type/post';
 import { IconMessageWhite, IconPasswordGray, IconThumbWhite } from '../collection/icons';
 
-type PostDetailItemype = Post & {
+type CommentDetailItemype = Comment & {
   onPressItem?: Function;
 };
 
-function PostDetailItem(props: PostDetailItemype) {
+function CommentDetailItem(props: CommentDetailItemype) {
   const navigation = useNavigation();
-  const { postId, title, content, creDt, postType, del, tbUser, onPressItem } = props;
+  const { content, creDt, del, tbUser, onPressItem } = props;
   return (
-    <PressableOpacity onPress={() => navigation.navigate('PostDetail', { postId: postId })} style={{ paddingVertical: 8, paddingHorizontal: 16 }}>
+    <PressableOpacity style={{ paddingVertical: 8, paddingHorizontal: 16 }}>
       <View style={{ flexDirection: 'row', paddingVertical: 8 }}>
         <View style={{ backgroundColor: '#222', width: 32, height: 32, borderRadius: 16 }} />
         <View style={{ marginLeft: 15 }}>
-          <Text>{postType}</Text>
+          <Text>{''}</Text>
           <Text>{tbUser?.name}</Text>
         </View>
       </View>
       <View style={{ paddingLeft: 10, paddingVertical: 5 }}>
-        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{title}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{''}</Text>
       </View>
       <>
         <Text numberOfLines={3}>{content}</Text>
       </>
       <View style={{ flexDirection: 'row', flex: 1, marginTop: 20 }}>
-        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
+        <Pressable style={{ flex: 0.33, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
           <IconThumbWhite width={16} />
-        </Pressable>
-        <Pressable onPress={() => (onPressItem ? onPressItem() : null)} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
-          <IconMessageWhite width={15} />
-        </Pressable>
-        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
-          <IconPasswordGray fill={'#000'} width={17} />
         </Pressable>
       </View>
     </PressableOpacity>
@@ -55,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostDetailItem;
+export default CommentDetailItem;

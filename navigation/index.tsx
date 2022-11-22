@@ -27,6 +27,7 @@ import { navigationRef } from '../util/navigationService';
 import { COLORS } from '../style/css/commonStyle';
 import { LoadingView } from '../component/LoadingView';
 import { useSelector } from 'react-redux';
+import CommentDetail from '../screen/post/CommentDetail';
 
 export default function Navigation() {
   const loading = useSelector((state: any) => state.loadingReducer.loading);
@@ -78,6 +79,15 @@ function RootNavigator() {
       <Stack.Screen
         name='PostDetail'
         component={PostDetail}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name='CommentDetail'
+        component={CommentDetail}
         options={{
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,

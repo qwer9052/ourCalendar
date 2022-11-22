@@ -15,5 +15,6 @@ import Landing from '../screen/Landing';
 import Splash from '../screen/Splash';
 import PostWrite from '../screen/post/PostWrite';
 import PostDetail from '../screen/post/PostDetail';
+import CommentDetail from '../screen/post/CommentDetail';
 
 export { TabOne, TabTwo, TabThree, TabFour, ModalScreen, Login, Test2, Signup, Landing, Splash, PostWrite, PostDetail };

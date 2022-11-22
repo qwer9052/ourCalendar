@@ -27,17 +27,14 @@ export default function PostWrite() {
 
   const alert = () =>
     Alert.alert(
-      // 말그대로 Alert를 띄운다
-      '', // 첫번째 text: 타이틀 제목
-      '글을 등록 하시겠습니까?', // 두번째 text: 그 밑에 작은 제목
+      '',
+      '글을 등록 하시겠습니까?',
       [
-        // 버튼 배열
         {
-          text: '아니요', // 버튼 제목
+          text: '아니요',
           style: 'cancel',
         },
-        { text: '등록', onPress: valid }, //버튼 제목
-        // 이벤트 발생시 로그를 찍는다
+        { text: '등록', onPress: valid },
       ],
       { cancelable: false },
     );
