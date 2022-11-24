@@ -20,6 +20,7 @@ export type RootStackParamList = {
   Splash: undefined;
   PostWrite: undefined;
   PostDetail: { postId: number };
+  PostSearch: undefined;
   CommentDetail: { commentId: number };
   Test2: undefined;
   ModalScreen: undefined;

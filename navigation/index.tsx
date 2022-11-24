@@ -22,12 +22,11 @@ import {
   IconCalendar,
   IconMessage,
 } from '../collection/icons';
-import { ModalScreen, TabFour, TabOne, TabThree, TabTwo, Login, Test2, Signup, Landing, Splash, PostWrite, PostDetail } from '../collection/screens';
+import { ModalScreen, TabFour, TabOne, TabThree, TabTwo, Login, Test2, Signup, Landing, Splash, PostWrite, PostDetail, CommentDetail, PostSearch } from '../collection/screens';
 import { navigationRef } from '../util/navigationService';
 import { COLORS } from '../style/css/commonStyle';
 import { LoadingView } from '../component/LoadingView';
 import { useSelector } from 'react-redux';
-import CommentDetail from '../screen/post/CommentDetail';
 
 export default function Navigation() {
   const loading = useSelector((state: any) => state.loadingReducer.loading);
@@ -88,6 +87,16 @@ function RootNavigator() {
       <Stack.Screen
         name='CommentDetail'
         component={CommentDetail}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          headerShadowVisible: false,
+        }}
+      />
+
+      <Stack.Screen
+        name='PostSearch'
+        component={PostSearch}
         options={{
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,

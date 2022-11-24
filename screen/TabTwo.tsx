@@ -1,8 +1,9 @@
 import React, { lazy, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, Image, Animated, SafeAreaView, Platform, StatusBar, Pressable } from 'react-native';
 import { IconPlusBlack, IconSearchBlack } from '../collection/icons';
 import { COLORS } from '../style/css/commonStyle';
+import { RootStackParamList, RootTabParamList } from '../navigation/types';
 //import { BorderItems } from '../component/BorderItems';
 
 const BorderItems = lazy(() => import('../component/BorderItems'));
@@ -49,12 +50,12 @@ function TabTwo() {
             <IconPlusBlack width={22} height={22} />
           </Pressable>
 
-          <Pressable hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} style={{ marginLeft: 'auto', right: 16 }}>
+          <Pressable onPress={() => navigation.navigate('PostSearch')} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} style={{ marginLeft: 'auto', right: 16 }}>
             <IconSearchBlack fill={COLORS.black_800} />
           </Pressable>
         </View>
       </Animated.View>
-      <BorderItems scrollY={scrollY} />
+      <BorderItems scrollY={scrollY} search={''} marginTop={50} />
     </SafeAreaView>
   );
 }

@@ -4,7 +4,7 @@ import * as L from '../store/actions';
 import { Token } from '../type/token';
 import { navigationRef } from './navigationService';
 
-export let serverUrl = 'http://172.20.10.4';
+export let serverUrl = 'http://192.168.0.9';
 
 export let postServerPort = ':8100';
 export let userServerPort = ':8080';

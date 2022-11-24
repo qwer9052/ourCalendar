@@ -8,9 +8,12 @@ import { axiosJwtPostInstance } from '../util/axiosPlugin';
 import { useFocusEffect } from '@react-navigation/native';
 import { IconArrowDownGray } from '../collection/icons';
 import { layoutAnimation } from '../style/animate/animate';
+import { LoadingView } from './LoadingView';
 
 type BorderItemsType = {
-  scrollY: Animated.Value;
+  scrollY: Animated.Value | undefined;
+  search: string | undefined;
+  marginTop: number;
 };
 
 function BorderItems(props: BorderItemsType) {
@@ -31,7 +34,7 @@ function BorderItems(props: BorderItemsType) {
 
   const post = () => {
     axiosJwtPostInstance
-      .get('post/all')
+      .get(`post?search=${props.search}`)
       .then((res) => {
         // res.data.map((e) => {
         //   console.log(e);
@@ -49,32 +52,30 @@ function BorderItems(props: BorderItemsType) {
       bounces={false}
       scrollEventThrottle={16}
       ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
-      ListEmptyComponent={
-        <View>
-          <Text>글이 없습니다</Text>
-        </View>
-      }
       ListHeaderComponent={
-        <View style={{ marginTop: 50, paddingHorizontal: 16, justifyContent: 'flex-end', flexDirection: 'row' }}>
-          <Pressable onPress={() => Alert.alert('ASdasd')} style={{ justifyContent: 'center' }}>
+        <View style={{ marginTop: props.marginTop, paddingHorizontal: 16, justifyContent: 'flex-end', flexDirection: 'row' }}>
+          {/* <Pressable onPress={() => Alert.alert('ASdasd')} style={{ justifyContent: 'center' }}>
             <Text style={{ fontSize: 15 }}>정렬</Text>
           </Pressable>
-          <IconArrowDownGray width={15} />
+          <IconArrowDownGray width={15} /> */}
         </View>
       }
       style={{ flexGrow: 1, width: '100%' }}
       data={list}
       renderItem={renderList}
-      onScroll={Animated.event(
-        [
-          {
-            nativeEvent: {
-              contentOffset: { y: props.scrollY },
+      onScroll={
+        props.scrollY &&
+        Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: { y: props.scrollY },
+              },
             },
-          },
-        ],
-        { useNativeDriver: true },
-      )}
+          ],
+          { useNativeDriver: true },
+        )
+      }
     />
   );
 }
